@@ -1,4 +1,4 @@
-EXP3:
+EXP3: Git operations
 $git --verison
 $git help
 $mkdir jj
@@ -24,5 +24,82 @@ $git add READ.txt
 $git status
 $git commit -m "Updated <file_name> with new changes"
 $git push origin master
+
+EXP4: Jenkins installation and create project
+Step-1: install Jenkins
+Step-2: localhost:8080
+Step-3:Create New Item - FreeStyleProject
+Step-4: Copy path of GitHub project https://github.com/wakaleo/game-of-life.git
+Step-5:Paste in Git-Repositories (Dashboard > testrun > Configuration)
+Step-6: ADD jdk (jdk21)(Dashboard > Manage Jenkins > Tools)
+Step-7: In Maven (Install from Apache)
+Step-8: Build Environment-Build Steps-Invoke toplevel Maven targets(Dashboard > testrun > Configurations)
+Step-9: Build Now
+
+EXP%: Pipeline
+Step-1: Create new item(pipeline)
+Step-2: Pipeline(Dashboard > Exp5 > Configuration) 
+Code:
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying'
+            }
+        }
+        
+    }
+    post {
+        success {
+            emailext(
+                subject: 'Pipeline Success',
+                body: 'The pipeline completed successfully.',
+                to: 'joeljohn9217@gmail.com'
+            )
+        }
+        failure {
+            emailext(
+                subject: 'Pipeline Failed',
+                body: 'The pipeline failed. Please check the logs for more details.',
+                to: 'joeljohn9217@gmail.com'
+            )
+        }
+    }
+}
+Step-3: Build
+Exp-6:Master-Slave Architecture
+Step-1:Dashboard > Manage Jenkins > Nodes > New node
+Step-2: Create a folder inside ProgramFiles > Jenkins
+Step-3:Copy the path of programfiles in remote root directory(Save)
+Step-4:Make Security changes TCP port for inbound agents(Random)
+Step-5:In Command Prompt, enter the commands in Agent node
+Step-6:After agent is connected, create a new item (freestyle)(add the name of the label set in node)
+Step-7:Go to build environment(Build Steps) > (Execute windows batch command)
+	javac Hello.java
+	java Hello
+Step-8:Create a file named "Hello.java" in workspace folder in Joel
+Step-9:Node > Configure > Add tools (C:\Program Files\Git) (C:\Program Files\Java\jdk-21)
+Step-10: Run
+
+Exp-7:maven project
+Step 1: Open Jenkins and click on new item.
+Step 2: Paste the path of the following repository https://github.com/jleetutorial/maven-project.git in the source code management.
+Step 3: write “test” in the goal and options.
+Step 4: Click on Save. After that below screen will appear.	
+Step 5: Click on the Build Now.
+
+
 
 
