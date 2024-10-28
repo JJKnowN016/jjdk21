@@ -1,4 +1,28 @@
-HELLO WORLD
-EZ OR WOT
+EXP3:
+$git --verison
+$git help
+$mkdir jj
+$cd jj
+$git init
+#create a text document named READ.txt
+$git status
+$git add READ.txt
+$git status
+$git config --global user.email "joeljohn9218@gmail.com"
+$git commit -m "Coming the READ file"
+$git status
+$git config --global user.username JJKnowN016
+#create new repository on github
+$git remote add origin https://github.com/JJKnowN016/filename.git
+$git push origin master
+$vim READ.txt
+$git diff READ.txt
+$git clone https://github.com/JJKnowN016/filename.git
+$cd filename
+$vim READ.txt
+$git add READ.txt
+$git status
+$git commit -m "Updated <file_name> with new changes"
+$git push origin master
 
 
